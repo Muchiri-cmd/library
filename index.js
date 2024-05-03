@@ -2,14 +2,16 @@ const addBookButton = document.querySelector('.newBook');
 
 const mainContainer = document.querySelector('.main-container');
 
-const myLibrary = [];
+let myLibrary = [];
 addBookButton.addEventListener('click',()=>{
     addBookToLibrary();
     console.log("Book successfully added to array");
 
 });
 //constructor
+let bookIdCounter = 0;
 function Book(title,author,pages,read=false){
+    this.id = bookIdCounter ++;
     this.title = title;
     this.author = author ;
     this.pages = pages;
@@ -34,6 +36,7 @@ function createBookCard(book) {
     // Create the main book card div
     const bookDiv = document.createElement("div");
     bookDiv.className = "book";
+    bookDiv.dataset.id = book.id //Store the unique ID as a dataset attribut
      
     // Create the left section
     const leftDiv = document.createElement("div");
@@ -69,7 +72,7 @@ function createBookCard(book) {
     sliderDiv.className = "slider";
     const sliderInput = document.createElement("input");
     sliderInput.type = "range";
-    sliderInput.value = "0";
+    sliderInput.value = book.read ? "100" : "0";
     sliderInput.min = "0";
     sliderInput.max = "100";
     sliderDiv.appendChild(sliderInput);
@@ -80,17 +83,28 @@ function createBookCard(book) {
     const icons = [
         "fas fa-star",
         "fas fa-clock",
-        "fa-solid fa-check-double",
         "fa-solid fa-book",
         "fa-solid fa-share-nodes",
-        "fas fa-trash",
         "fas fa-pen",
     ];
-
     icons.forEach((iconClass) => {
         const iconElement = document.createElement("i");
         iconElement.className = iconClass;
         functionalityIconsDiv.appendChild(iconElement);
+    });
+
+    //mark blue if user has read
+    const readIcon = document.createElement('i');
+    readIcon.className = 'fas fa-check-double';
+    functionalityIconsDiv.appendChild(readIcon)
+    readIcon.style.color = book.read ? 'blue' : 'grey';
+
+    //add event listener to each trash icon button for each book
+    const trashIcon = document.createElement('i');
+    trashIcon.className = 'fas fa-trash';
+    functionalityIconsDiv.appendChild(trashIcon)
+    trashIcon.addEventListener('click', () => {
+        removeBook(book.id);
     });
 
     functionalityDiv.appendChild(functionalityIconsDiv);
@@ -103,14 +117,20 @@ function createBookCard(book) {
 }
 const removeBookBtn = document.querySelectorAll('.fa-trash');
 const readIcons = document.querySelectorAll('fa-check-double')
-function removeBook(){
+function removeBook(bookId){
     //remove book from library  
-    myLibrary.pop();  
+    // Find and remove from the array
+    myLibrary = myLibrary.filter(book => book.id !== bookId);
+
+    // Remove corresponding book card from the DOM
+    const bookElement = mainContainer.querySelector(`.book[data-id='${bookId}']`);
+    if (bookElement) {
+        bookElement.remove();
+        console.log("Book succesfully removed")
+    } 
 }
 function displayBooks(){
     //loop through the array and display each book
-    console.log('Here are all books')
     myLibrary.forEach((book)=>createBookCard(book));
-
 }
 
