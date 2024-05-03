@@ -1,0 +1,98 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    background-color:#082f49;
+    color:white;
+    font-size:20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+header{
+    background-color: #164e63;
+    padding:1em;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0 4em;
+}
+.sidebar-icon{
+    display: flex;
+    i{
+        margin-right:.7em;
+    }
+}
+.nav-icons i{
+    margin-right:.7em;
+}
+.sidebar-icon,.functionality-icons,.nav-icons :hover{
+    cursor: pointer;
+}
+.main-container{
+    display: grid;
+    margin:0 4em;
+    grid-template-columns: repeat(auto-fit,minmax(800px,1fr));
+    position:relative;
+}
+.cover-img img{
+    height:15em;
+}
+.book{
+    background-color:#083344;
+    height:300px;
+    margin:.5em;
+    display: flex;
+    border-radius:1em;
+}
+.bookinfo{
+    display:flex;
+    flex-direction: column;
+}
+.title{
+    font-size:2em;
+}
+.author{
+    font-style: italic;
+    font-size: 1.2em;
+}
+.right{
+    padding:1.5em;
+}
+.functionality{
+    display: flex;
+    margin-top:5em;
+    flex-direction: column;  
+}
+input{
+    width:23em;
+}
+
+.functionality-icons{
+    margin:.5em;
+    i{
+        margin-right:1em;
+    }
+}
+.add-btn{
+    position: fixed;
+    right:0;
+    top: 90vh;
+}
+.add-btn button{
+    border-radius: 50%;
+    height:3em;
+    width: 3em;
+    background-color: #2563eb;
+    color:white;
+    font-size: 1.2em;
+    border:none;
+}
+.newBook:hover{
+    cursor: pointer;
+    transform: translateY(5px);
+    transition:ease-in-out;
+    /*transform: rotate(45deg)*/
+}
