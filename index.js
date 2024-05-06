@@ -57,7 +57,7 @@ function addBookToLibrary(title,author,pages,read){
 }
 //create book card 
 function createBookCard(book) {
-    console.log(book.read);
+   
     // Create the main book card div
     const bookDiv = document.createElement("div");
     bookDiv.className = "book";
@@ -99,7 +99,7 @@ function createBookCard(book) {
     sliderInput.type = "range";
     sliderInput.min = "0";
     sliderInput.max = "100";
-    sliderInput.value = book.read ? "100" : "0"; // modify value of slider to show read status
+    //sliderInput.value = (!book.read) ? "0" : "110"; // modify value of slider to show read status
     sliderDiv.appendChild(sliderInput);
     functionalityDiv.appendChild(sliderDiv);
     // Create the functionality icons section
@@ -108,9 +108,7 @@ function createBookCard(book) {
     const icons = [
         "fas fa-star",
         "fas fa-clock",
-        "fa-solid fa-book",
         "fa-solid fa-share-nodes",
-        "fas fa-pen",
     ];
     icons.forEach((iconClass) => {
         const iconElement = document.createElement("i");
@@ -121,10 +119,8 @@ function createBookCard(book) {
     //mark blue if user has read
     const readIcon = document.createElement('i');
     readIcon.className = 'fas fa-check-double';
-    readIcon.style.color = book.read ? "blue" : "grey";
+    //readIcon.style.color = (!book.read) ? "grey" : "blue";
     functionalityIconsDiv.appendChild(readIcon)
-   
-
 
     //add event listener to each trash icon button for each book
     const trashIcon = document.createElement('i');
@@ -142,8 +138,6 @@ function createBookCard(book) {
     // Append the book card to the container
     mainContainer.appendChild(bookDiv);
 }
-const removeBookBtn = document.querySelectorAll('.fa-trash');
-const readIcons = document.querySelectorAll('fa-check-double')
 function removeBook(bookId){
     //remove book from library  
     // Find and remove from the array
@@ -161,3 +155,4 @@ function displayBooks(){
     myLibrary.forEach((book)=>createBookCard(book));
 }
 
+// ==TODO : CHANGE COLOR OF ICONS BASED ON READ STATUS //

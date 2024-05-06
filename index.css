@@ -39,7 +39,8 @@ header{
     position:relative;
 }
 .cover-img img{
-    height:15em;
+    height:14.5em;
+    border-radius: .5em;
 }
 .book{
     background-color:#083344;
@@ -60,11 +61,11 @@ header{
     font-size: 1.2em;
 }
 .right{
-    padding:1em;
+    padding:1.5em;
 }
 .functionality{
     display: flex;
-    margin-top:5em;
+    margin-top:3em;
     flex-direction: column;  
 }
 .functionality-icons{
@@ -194,7 +195,7 @@ dialog[open]{
     .add-btn{
         position: fixed;
         right:0;
-        top: 85vh;
+        top: 80vh;
     }  
     .main-container{
         margin:1rem;
