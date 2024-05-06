@@ -97,9 +97,9 @@ function createBookCard(book) {
     sliderDiv.className = "slider";
     const sliderInput = document.createElement("input");
     sliderInput.type = "range";
-    sliderInput.value = (book.read == true) ? "100" : "0"; // modify value of slider to show read status
     sliderInput.min = "0";
     sliderInput.max = "100";
+    sliderInput.value = book.read ? "100" : "0"; // modify value of slider to show read status
     sliderDiv.appendChild(sliderInput);
     functionalityDiv.appendChild(sliderDiv);
     // Create the functionality icons section
@@ -121,8 +121,10 @@ function createBookCard(book) {
     //mark blue if user has read
     const readIcon = document.createElement('i');
     readIcon.className = 'fas fa-check-double';
+    readIcon.style.color = book.read ? "blue" : "grey";
     functionalityIconsDiv.appendChild(readIcon)
-    readIcon.style.color = (book.read == true) ? "blue" : "grey";
+   
+
 
     //add event listener to each trash icon button for each book
     const trashIcon = document.createElement('i');
