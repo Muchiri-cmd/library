@@ -8,6 +8,7 @@ body{
     color:white;
     font-size:20px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width:100vw;
 }
 header{
     background-color: #164e63;
@@ -42,7 +43,7 @@ header{
 }
 .book{
     background-color:#083344;
-    height:300px;
+    height:15em;
     margin:.5em;
     display: flex;
     border-radius:1em;
@@ -59,17 +60,13 @@ header{
     font-size: 1.2em;
 }
 .right{
-    padding:1.5em;
+    padding:1em;
 }
 .functionality{
     display: flex;
     margin-top:5em;
     flex-direction: column;  
 }
-input{
-    width:23em;
-}
-
 .functionality-icons{
     margin:.5em;
     i{
@@ -95,4 +92,136 @@ input{
     transform: translateY(5px);
     transition:ease-in-out;
     /*transform: rotate(45deg)*/
+}
+form{
+   font-size: 1.2em;
+   position: relative; 
+   background-color:#bfdbfe;
+   min-width:19em;
+}
+.form-header{
+   background-color:cadetblue;
+   padding:1em;
+}
+form fieldset{
+    display: flex;
+    flex-direction: column;
+    margin:.3em auto;
+}
+.options-fieldset label input{
+    margin-left:2em;
+    transform: scale(1.8);
+}
+label{
+    margin: .5em;
+}
+input{
+    font-size: .6em;
+    border-radius: .5em;
+    padding:.6em;
+    font-size: .7em;
+}
+.close{
+    padding:1em;
+    position:absolute;
+    top:0;
+    right:0;
+    background-color: red;
+    color:white;
+    font-size:.7em;
+}
+#Submit{
+    padding:1em;
+    width:80%;
+    font-size:.8em;
+    margin:.5em;
+    border-radius:1em;
+    color:white;
+    background-color:cadetblue;
+}
+/*Dialog animation*/
+dialog{
+    animation: fade-out 0.7s ease-out;
+    margin:3.5em .6em;
+    padding:.1em;
+    border:none;
+    
+}
+dialog[open]{
+    animation: fade-in 0.7s ease-out;
+}
+/*Animation keyframes*/
+@keyframes fade-in{
+    0%{
+        opacity:0;
+        transform: scaleY(0);
+        display: none;
+    }
+    100%{
+        opacity:1;
+        transform: scaleY(1);
+        display: block;
+    }
+}
+@keyframes fade-out{
+    0%{
+        opacity:1;
+        transform: scaleY(1);
+        display: block;
+    }
+    100%{
+        opacity:0;
+        transform:scaleY(0);
+        display: none;;
+    }
+}
+@media screen and (max-width:640px){
+    form{
+        font-size:1rem;  
+        min-width:auto; 
+    }
+    input{
+        margin:.4rem;
+        padding:.5rem;
+    }
+    dialog{
+        margin:4rem .2rem;
+    }
+    .navbar{
+        width:90vw;
+        margin:0;
+    }
+    .add-btn{
+        position: fixed;
+        right:0;
+        top: 85vh;
+    }  
+    .main-container{
+        margin:1rem;
+        
+        grid-template-columns: 1fr;
+    }
+    .cover-img img{
+        height:7rem;
+    }
+    .book{
+        font-size:.5rem;
+        margin: .8rem;
+        height:6rem;
+    }
+    .functionality{
+        margin-top:.1rem;
+    }
+    .functionality-icons{
+        margin:.1rem;
+        i{
+            margin-right:.4rem;
+        }
+    }
+    input[type="range"]{
+        width:6rem;
+        margin:0;
+    }
+    
+   
 }
