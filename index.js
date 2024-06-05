@@ -4,7 +4,8 @@ const dialog = document.getElementById("dialog")
 const mainContainer = document.querySelector('.main-container');
 const closeBtn = document.querySelector(".close");
 const submitBtn = document.getElementById('Submit');
-const form = document.querySelector('form')
+const form = document.querySelector('form');
+const inputs = document.querySelectorAll('input');
 
 // Event Listeners
 addBookButton.addEventListener('click',()=>{
@@ -12,7 +13,7 @@ addBookButton.addEventListener('click',()=>{
 });
 closeBtn.addEventListener("click",(e)=>{
     e.preventDefault()
-    dialog.close()
+    closeFormReset()
 })
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
@@ -25,10 +26,27 @@ form.addEventListener('submit',(e)=>{
     const read = formData.get('read');
     //add book to library
     library.addBookToLibrary(title,author,pages,read);
-    form.reset();
-    dialog.close();
-
+    closeFormReset();
 });
+
+function closeFormReset(){
+    dialog.close()
+    form.reset()
+    inputs.forEach(input => clearFeedbackIcons(input))
+}
+function clearFeedbackIcons (input){
+    const feedbackIcon = input.closest('label').querySelector('.fa-solid');
+    if (feedbackIcon) feedbackIcon.classList.replace('fa-circle-check','fa-circle-xmark')
+}
+
+inputs.forEach(input => input.addEventListener('input', (e) => {
+    const feedbackIcon = input.closest('label').querySelector('.fa-solid');
+    if (!input.validity.valueMissing) {
+        if (feedbackIcon) feedbackIcon.classList.replace('fa-circle-xmark','fa-circle-check')
+    } else {
+        feedbackIcon.classList.replace('fa-circle-check', 'fa-circle-xmark');
+    }
+}))
 
 let bookIdCounter = 1;//keep track of book by unique incremental ID
 //Book constructor func

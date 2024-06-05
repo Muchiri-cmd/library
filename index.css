@@ -139,6 +139,7 @@ input{
     border-radius:1em;
     color:white;
     background-color:cadetblue;
+    cursor: pointer;
 }
 /*Dialog animation*/
 dialog{
@@ -225,4 +226,26 @@ dialog[open]{
     }
     
    
+}
+.required{
+    font-size:.7em;
+    color:red;
+    position: absolute;
+    
+}
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+fieldset{
+    width: 80%;
+}
+input:focus{
+    outline: none;
+}
+.fa-circle-check{
+    color:green;
+}
+.fa-circle-xmark{
+    color:grey;
 }
